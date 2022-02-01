@@ -30,7 +30,7 @@ has_many :records
 | condition_id       | integer    | null: false                   |
 | shipment_source_id | integer    | null: false                   |
 | shipping_days_id   | integer    | null: false                   |
-| delivery_charge    | string     | null: false                   |
+| delivery_charge_id | integer    | null: false                   |
 | price              | integer    | null: false                   |
 | user               | references | null: false, foreign_key:true |
 
