@@ -69,7 +69,7 @@ has_one :address
 | city             | string     | null: false                    |
 | address          | string     | null: false                    |
 | building         | string     |                                |
-| telephone_number | integer    | null: false, foreign_key: true |
+| telephone_number | string    | null: false, foreign_key: true |
 
 ### Association
 
