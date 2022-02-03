@@ -69,45 +69,49 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
 
-      it 'お名前(全角)は、名字が必須であること' do
+      it 'フルネームは、苗字が必須であること' do
         @user.last_name = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Last name can't be blank")
       end
 
-      it 'お名前(全角)は、名前が必須であること' do
+      it 'フルネームは、名前が必須であること' do
         @user.first_name = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("First name can't be blank")
       end
 
-      it 'お名前(全角)は、全角（漢字・ひらがな・カタカナ）での入力が必須であること' do
+      it '苗字は、全角（漢字・ひらがな・カタカナ）での入力が必須であること' do
         @user.last_name = 'yamada'
         @user.valid?
         expect(@user.errors.full_messages).to include('Last name is invalid. Input full-width characters.')
+      end
 
+      it '名前は、全角（漢字・ひらがな・カタカナ）での入力が必須であること' do
         @user.first_name = 'tarou'
         @user.valid?
         expect(@user.errors.full_messages).to include('First name is invalid. Input full-width characters.')
       end
 
-      it 'お名前カナ(全角)は、名字が必須であること' do
+      it 'フルネーム(カナ)は、苗字が必須であること' do
         @user.last_name_kana = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Last name kana can't be blank")
       end
 
-      it 'お名前カナ(全角)は、名前が必須であること' do
+      it 'フルネーム(カナ)は、名前が必須であること' do
         @user.first_name_kana = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("First name kana can't be blank")
       end
 
-      it 'お名前カナ(全角)は、全角（カタカナ）での入力が必須であること' do
+      it '苗字(カナ)は、全角（カタカナ）での入力が必須であること' do
         @user.last_name_kana = 'やまだ'
         @user.valid?
         expect(@user.errors.full_messages).to include('Last name kana is invalid. Input full-width katakana characters.')
+      end
 
+      it '名前(カナ)は、全角（カタカナ）での入力が必須であること' do
         @user.first_name_kana = 'たろう'
         @user.valid?
         expect(@user.errors.full_messages).to include('First name kana is invalid. Input full-width katakana characters.')
