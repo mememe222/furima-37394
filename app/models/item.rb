@@ -11,12 +11,13 @@ class Item < ApplicationRecord
   belongs_to :charge
 
   validates :title, presence: true
+  validates :image, presence: true
   validates :explanation, presence: true
   validates :category_id, numericality: { other_than: 1, message: "can't be blank" } 
-  validates :condition_id, presence: true
-  validates :shipment_source_id, presence: true
-  validates :shipping_days_id, presence: true
-  validates :delivery_charge_id, presence: true
+  validates :condition_id, numericality: { other_than: 1, message: "can't be blank" } 
+  validates :shipment_source_id, numericality: { other_than: 1, message: "can't be blank" } 
+  validates :shipping_days_id, numericality: { other_than: 1, message: "can't be blank" } 
+  validates :delivery_charge_id, numericality: { other_than: 1, message: "can't be blank" } 
   validates :price, presence: true
 end
 
