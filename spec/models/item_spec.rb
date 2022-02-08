@@ -56,7 +56,7 @@ RSpec.describe Item, type: :model do
       end
 
       it '発送までの日数の情報が必須であること' do
-        @item.delivery_charge_id = '1'
+        @item.charge_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Delivery charge can't be blank")
       end
