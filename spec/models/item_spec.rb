@@ -50,7 +50,7 @@ RSpec.describe Item, type: :model do
       end
 
       it '発送元の地域の情報が必須であること' do
-        @item.shipping_days_id = '1'
+        @item.days_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping days can't be blank")
       end
