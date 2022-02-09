@@ -16,7 +16,7 @@ class Item < ApplicationRecord
   validates :category_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :condition_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :shipment_source_id, numericality: { other_than: 1, message: "can't be blank" }
-  validates :shipping_days_id, numericality: { other_than: 1, message: "can't be blank" }
+  validates :days_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :charge_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :price, presence: true,
                     numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'is invalid' }
