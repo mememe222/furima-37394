@@ -10,7 +10,7 @@ class Order
     validates :prefecture, numericality: { other_than: 1, message: "can't be blank" }
     validates :city, presence: true
     validates :address, presence: true
-    validates :telephone_number, presence: true, length: {minimum: 10, maximum: 11}
+    validates :telephone_number, presence: true, length: {minimum: 10, maximum: 11}, format: {with: /\A[0-9]+\z/i, message: "is invalid. Input half-width characters."}
   end
 
   def save
