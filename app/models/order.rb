@@ -7,10 +7,9 @@ class Order
     validates :user_id, presence: true
     validates :item_id, presence: true
     validates :post_code, presence: true
-    validates :prefecture, numericality: { other_than: 0, message: "can't be blank" }
+    validates :prefecture, numericality: { other_than: 1, message: "can't be blank" }
     validates :city, presence: true
     validates :address, presence: true
-    validates :building
     validates :telephone_number, presence: true
   end
 
