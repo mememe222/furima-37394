@@ -6,11 +6,11 @@ class Order
   with_options presence: true do
     validates :user_id, presence: true
     validates :item_id, presence: true
-    validates :post_code, presence: true
+    validates :post_code, presence: true, format: { with: /\A[0-9]{3}[-][0-9]{4}\z/ }
     validates :prefecture, numericality: { other_than: 1, message: "can't be blank" }
     validates :city, presence: true
     validates :address, presence: true
-    validates :telephone_number, presence: true
+    validates :telephone_number, presence: true, length: {minimum: 10, maximum: 11}
   end
 
   def save
