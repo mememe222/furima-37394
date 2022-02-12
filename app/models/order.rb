@@ -1,6 +1,6 @@
 class Order
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id,:post_code, :prefecture, :city, :address, :building, :telephone_number, :record_id
+  attr_accessor :user_id, :item_id,:post_code, :prefecture, :city, :address, :building, :telephone_number, :record_id, :token
 
 
   with_options presence: true do
@@ -11,6 +11,7 @@ class Order
     validates :city, presence: true
     validates :address, presence: true
     validates :telephone_number, presence: true, length: {minimum: 10, maximum: 11}, format: {with: /\A[0-9]+\z/i, message: "is invalid. Input half-width characters."}
+    validates :token, presence: true
   end
 
   def save
