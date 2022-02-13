@@ -4,11 +4,11 @@ class RecordsController < ApplicationController
   def index
     @item = Item.find(params[:item_id])
     @order = Order.new
-    if @item.user_id == current_user.id 
-      redirect_to root_path 
-     return 
+    if @item.user_id == current_user.id
+      redirect_to root_path
+      nil
     elsif @item.record.present?
-      redirect_to root_path 
+      redirect_to root_path
     end
   end
 
