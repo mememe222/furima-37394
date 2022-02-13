@@ -80,6 +80,18 @@ RSpec.describe Order, type: :model do
         @order.valid?
         expect(@order.errors.full_messages).to include('Telephone number is invalid. Input half-width characters.')
       end
+
+      it 'ユーザーが紐づいていなければ投稿できない' do
+        @order.user_id = nil
+        @order.valid?
+        expect(@order.errors.full_messages).to include("User can't be blank")
+      end
+
+      it '商品が紐づいていなければ投稿できない' do
+        @order.item_id = nil
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Item can't be blank")
+      end
     end
   end
 end

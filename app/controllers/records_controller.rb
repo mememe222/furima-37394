@@ -1,8 +1,8 @@
 class RecordsController < ApplicationController
   before_action :authenticate_user!, { only: [:index] }
+  before_action :find_item, only: [:index, :create]
 
   def index
-    @item = Item.find(params[:item_id])
     @order = Order.new
     if @item.user_id == current_user.id
       redirect_to root_path
@@ -14,7 +14,6 @@ class RecordsController < ApplicationController
 
   def create
     @order = Order.new(record_params)
-    @item = Item.find(params[:item_id])
     if @order.valid?
       Payjp.api_key = ENV['PAYJP_SECRET_KEY']
       Payjp::Charge.create(
@@ -25,7 +24,6 @@ class RecordsController < ApplicationController
       @order.save
       redirect_to root_path
     else
-      @item = Item.find(params[:item_id])
       render :index
     end
   end
@@ -36,5 +34,9 @@ class RecordsController < ApplicationController
     params.require(:order).permit(:post_code, :prefecture, :city, :address, :building, :telephone_number).merge(
       user_id: current_user.id, item_id: params[:item_id], token: params[:token]
     )
+  end
+
+  def find_item
+    @item = Item.find(params[:item_id])
   end
 end
